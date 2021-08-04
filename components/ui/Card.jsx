@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { IonButton } from '@ionic/react';
 import classNames from 'classnames';
 
-import { TaehaModal, DMSModal, MorbidModal, IvunModal } from '../pages/Modal';
+import { DonationModal } from '../pages/Modal';
 
 const Card = ({ children, className, showModal, setShowModal, ...props }) => {
   return (
@@ -18,20 +18,9 @@ const Card = ({ children, className, showModal, setShowModal, ...props }) => {
 const InstagramCard = data => {
   const [showModal, setShowModal] = useState(false);
 
-  const getModalType = data => {
-    const modals = {
-      taeha: <TaehaModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-      dms: <DMSModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-      morbid: <MorbidModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-      ivun: <IvunModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-    };
-
-    return modals[data.modal];
-  };
-
   return (
     <Card>
-      {getModalType(data)}
+      <DonationModal {...data} showModal={showModal} setShowModal={setShowModal} />
       <div className="absolute top-0 right-0 -mt-4 mr-2 z-10">
         <div className="rounded-full leading-none">
           <i className="text-base align-middle"></i>
@@ -72,20 +61,9 @@ const InstagramCard = data => {
 const YoutubeCard = data => {
   const [showModal, setShowModal] = useState(false);
 
-  const getModalType = data => {
-    const modals = {
-      taeha: <TaehaModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-      dms: <DMSModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-      morbid: <MorbidModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-      ivun: <IvunModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-    };
-
-    return modals[data.modal];
-  };
-
   return (
     <Card showModal={showModal} setShowModal={setShowModal}>
-      {getModalType(data)}
+      <DonationModal {...data} showModal={showModal} setShowModal={setShowModal} />
       <div className="absolute top-0 right-0 -mt-4 mr-2 z-10">
         <div className="rounded-full leading-none">
           <i className="text-base align-middle"></i>
@@ -126,20 +104,9 @@ const YoutubeCard = data => {
 const SpotifyCard = data => {
   const [showModal, setShowModal] = useState(false);
 
-  const getModalType = data => {
-    const modals = {
-      taeha: <TaehaModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-      dms: <DMSModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-      morbid: <MorbidModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-      ivun: <IvunModal {...data} showModal={showModal} setShowModal={setShowModal} />,
-    };
-
-    return modals[data.modal];
-  };
-
   return (
     <Card showModal={showModal} setShowModal={setShowModal}>
-      {getModalType(data)}
+      <DonationModal {...data} showModal={showModal} setShowModal={setShowModal} />
       <div className="absolute top-0 right-0 -mt-4 mr-2 z-10">
         <div className="rounded-full leading-none">
           <i className="text-base align-middle"></i>
