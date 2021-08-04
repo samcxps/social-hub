@@ -12,8 +12,6 @@ import {
   IonLabel,
   IonListHeader,
 } from '@ionic/react';
-import Notifications from './Notifications';
-import { notificationsOutline } from 'ionicons/icons';
 
 const Search = () => {
   const [searchText, setSearchText] = useState('');
@@ -35,6 +33,7 @@ const Search = () => {
         <IonSearchbar
           value={searchText}
           onIonChange={e => setSearchText(e.detail.value)}
+          cancelButtonIcon={false}
         ></IonSearchbar>
         <IonList>
           <IonListHeader>

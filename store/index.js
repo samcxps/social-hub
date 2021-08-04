@@ -1,6 +1,6 @@
 import { Store as PullStateStore } from 'pullstate';
 
-import { lists, feedItems, notifications } from '../mock';
+import { feedItems, notifications } from '../mock';
 
 const Store = new PullStateStore({
   safeAreaTop: 0,
@@ -9,7 +9,6 @@ const Store = new PullStateStore({
   notificationsOpen: false,
   currentPage: null,
   feedItems,
-  lists,
   notifications,
   settings: {
     enableNotifications: true,
