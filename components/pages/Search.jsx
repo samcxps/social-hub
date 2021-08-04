@@ -17,6 +17,12 @@ import { notificationsOutline } from 'ionicons/icons';
 
 const Search = () => {
   const [searchText, setSearchText] = useState('');
+  const [recentSearches, setRecentSearches] = useState([
+    'dms',
+    'taeha types',
+    'ivun.street',
+    'morbid podcast',
+  ]);
 
   return (
     <IonPage>
@@ -31,19 +37,14 @@ const Search = () => {
           onIonChange={e => setSearchText(e.detail.value)}
         ></IonSearchbar>
         <IonList>
-          <IonListHeader>Recent Searches</IonListHeader>
-          <IonItem>
-            <IonLabel>dms</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>taeha types</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>ivun.street</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>morbid podcast</IonLabel>
-          </IonItem>
+          <IonListHeader>
+            <IonText color="primary">Recent Searches</IonText>
+          </IonListHeader>
+          {recentSearches.map(search => (
+            <IonItem key={`search-${search}`}>
+              <IonLabel>{search}</IonLabel>
+            </IonItem>
+          ))}
         </IonList>
       </IonContent>
     </IonPage>
