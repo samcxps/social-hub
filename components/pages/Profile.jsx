@@ -21,25 +21,10 @@ const Settings = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Settings</IonTitle>
+          <IonTitle>Profile</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <IonList>
-          <IonItem>
-            <IonLabel>Enable Notifications</IonLabel>
-            <IonToggle
-              checked={settings.enableNotifications}
-              onIonChange={e => {
-                setSettings({
-                  ...settings,
-                  enableNotifications: e.target.checked,
-                });
-              }}
-            />
-          </IonItem>
-        </IonList>
-      </IonContent>
+      <IonContent></IonContent>
     </IonPage>
   );
 };
