@@ -32,7 +32,7 @@ const ivunItems = [
     image: '/assets/ivun-yt-1.jpg',
     href: 'https://www.youtube.com/watch?v=_ULrRSr5ViQ',
     comments: 187,
-    views: 13350,
+    views: '13.3k',
   },
 ];
 const dmsItems = [
@@ -52,7 +52,7 @@ const dmsItems = [
     image: '/assets/dms-yt-1.jpg',
     href: 'https://www.youtube.com/watch?v=--UN_ot4Zfc',
     comments: 147,
-    views: 11824,
+    views: '11.8k',
   },
 ];
 const taehaItems = [
@@ -73,7 +73,7 @@ const taehaItems = [
     image: '/assets/taeha-yt-1.jpg',
     href: 'https://www.youtube.com/watch?v=hS4czKl7WpQ',
     comments: 1732,
-    views: 853174,
+    views: '853k',
   },
 ];
 const morbidItems = [
@@ -84,7 +84,7 @@ const morbidItems = [
     image: '/assets/morbid-1.jpeg',
     href: 'https://instagram.com/morbidpodcast',
     comments: 330,
-    likes: 16135,
+    likes: '16.1k',
   },
   {
     type: 'spotify',

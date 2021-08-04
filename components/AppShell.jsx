@@ -3,11 +3,10 @@ import { StatusBar, Style } from '@capacitor/status-bar';
 
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
-import Menu from './Menu';
 
 import Tabs from './pages/Tabs';
 
-window.matchMedia("(prefers-color-scheme: dark)").addListener(async (status) => {
+window.matchMedia('(prefers-color-scheme: dark)').addListener(async status => {
   try {
     await StatusBar.setStyle({
       style: status.matches ? Style.Dark : Style.Light,
@@ -20,7 +19,7 @@ const AppShell = () => {
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
-          <Menu />
+          {/* <Menu /> */}
           <IonRouterOutlet id="main">
             <Route path="/tabs" render={() => <Tabs />} />
             <Route exact path="/" render={() => <Redirect to="/tabs" />} />

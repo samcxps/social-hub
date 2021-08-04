@@ -1,10 +1,9 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
-import { home, person } from 'ionicons/icons';
+import { home, person, search } from 'ionicons/icons';
 
 import Home from './Feed';
-import Lists from './Lists';
-import ListDetail from './ListDetail';
+import Search from './Search';
 import Settings from './Settings';
 
 const Tabs = () => {
@@ -12,6 +11,7 @@ const Tabs = () => {
     <IonTabs>
       <IonRouterOutlet>
         <Route path="/tabs/feed" component={Home} exact={true} />
+        <Route path="/tabs/search" component={Search} exact={true} />
         <Route path="/tabs/profile" component={Settings} exact={true} />
         <Route path="/tabs" render={() => <Redirect to="/tabs/feed" />} exact={true} />
       </IonRouterOutlet>
@@ -20,7 +20,11 @@ const Tabs = () => {
           <IonIcon icon={home} />
           <IonLabel>Feed</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab2" href="/tabs/profile">
+        <IonTabButton tab="tab2" href="/tabs/search">
+          <IonIcon icon={search} />
+          <IonLabel>Search</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="tab3" href="/tabs/profile">
           <IonIcon icon={person} />
           <IonLabel>Profile</IonLabel>
         </IonTabButton>

@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import Image from 'next/image';
 
 import classNames from 'classnames';
@@ -18,7 +20,7 @@ const InstagramCard = ({ title, type, text, creator, comments, likes, image, hre
     </div>
     <div className="h-32 w-full relative">
       <a href={href} target="_blank" rel="noreferrer">
-        <Image className="rounded-t-xl" objectFit="cover" src={image} alt="" layout="fill" />
+        <img className="rounded-t-xl h-32 w-full object-cover" src={image} alt="" />
       </a>
     </div>
     <div className="px-4 py-4 bg-white rounded-b-xl dark:bg-gray-900">
@@ -50,7 +52,7 @@ const YoutubeCard = ({ title, type, text, creator, comments, views, image, href 
     </div>
     <div className="h-32 w-full relative">
       <a href={href} target="_blank" rel="noreferrer">
-        <Image className="rounded-t-xl" objectFit="cover" src={image} alt="" layout="fill" />
+        <img className="rounded-t-xl h-32 w-full object-cover" src={image} alt="" />
       </a>
     </div>
     <div className="px-4 py-4 bg-white rounded-b-xl dark:bg-gray-900">
@@ -82,7 +84,7 @@ const SpotifyCard = ({ title, type, text, creator, length, image, href }) => (
     </div>
     <div className="h-32 w-full relative">
       <a href={href} target="_blank" rel="noreferrer">
-        <Image className="rounded-t-xl" objectFit="cover" src={image} alt="" layout="fill" />
+        <img className="rounded-t-xl h-32 w-full object-cover" src={image} alt="" />
       </a>
     </div>
     <div className="px-4 py-4 bg-white rounded-b-xl dark:bg-gray-900">
