@@ -16,11 +16,31 @@ import {
 const Search = () => {
   const [searchText, setSearchText] = useState('');
   const [recentSearches, setRecentSearches] = useState([
-    'dms',
-    'taeha types',
-    'ivun.street',
-    'morbid podcast',
+    {
+      shouldShow: true,
+      value: 'dms',
+    },
+    {
+      shouldShow: true,
+      value: 'taeha types',
+    },
+    {
+      shouldShow: true,
+      value: 'ivun.street',
+    },
+    {
+      shouldShow: true,
+      value: 'morbid podcast',
+    },
   ]);
+
+  const onSearchbarChange = e => {
+    const query = e.detail.value.toLowerCase();
+
+    recentSearches.forEach(item => {
+      const shouldShow = item.value.toLowerCase().indexOf(query) > -1;
+    });
+  };
 
   return (
     <IonPage>
@@ -32,16 +52,16 @@ const Search = () => {
       <IonContent>
         <IonSearchbar
           value={searchText}
-          onIonChange={e => setSearchText(e.detail.value)}
+          onIonChange={e => onSearchbarChange(e)}
           cancelButtonIcon={false}
         ></IonSearchbar>
         <IonList>
           <IonListHeader>
             <IonText color="primary">Recent Searches</IonText>
           </IonListHeader>
-          {recentSearches.map(search => (
-            <IonItem key={`search-${search}`}>
-              <IonLabel>{search}</IonLabel>
+          {recentSearches.map(item => (
+            <IonItem key={`search-${item.value}`}>
+              <IonLabel>{item.value}</IonLabel>
             </IonItem>
           ))}
         </IonList>
