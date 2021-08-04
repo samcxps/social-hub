@@ -38,8 +38,7 @@ const Settings = () => {
               <IonText color="primary">4 Following</IonText>
               <IonText color="primary">6 Donations</IonText>
             </div>
-            <div>
-              <IonItem />
+            <div className="space-y-2">
               <IonItem>
                 <IonLabel position="stacked">Name</IonLabel>
                 <IonInput type="text" value="Chris Johnson" readonly />

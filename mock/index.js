@@ -18,6 +18,7 @@ const shuffleIt = array => {
 const ivunItems = [
   {
     type: 'instagram',
+    modal: 'ivun',
     text: 'Sometimes I\u2019ll ask',
     creator: 'ivun.street',
     image: '/assets/ivun-1.jpeg',
@@ -27,6 +28,7 @@ const ivunItems = [
   },
   {
     type: 'youtube',
+    modal: 'ivun',
     text: '28mm',
     creator: 'Ivan Chow',
     image: '/assets/ivun-yt-1.jpg',
@@ -38,6 +40,7 @@ const ivunItems = [
 const dmsItems = [
   {
     type: 'instagram',
+    modal: 'dms',
     text: '\ud83e\udeb4 \ud83c\udfa7 \ud83c\udfa5',
     creator: 'dms3tv',
     image: '/assets/dms-1.jpeg',
@@ -47,6 +50,7 @@ const dmsItems = [
   },
   {
     type: 'youtube',
+    modal: 'dms',
     text: 'Nothing Ear(1) - Sound test & Unboxing!!!',
     creator: 'DMS',
     image: '/assets/dms-yt-1.jpg',
@@ -58,6 +62,7 @@ const dmsItems = [
 const taehaItems = [
   {
     type: 'instagram',
+    modal: 'taeha',
     text:
       'Typing test of the @modekeyboards SixtyFive is now live on my YouTube channel! Featuring a back accent piece that is interchangeable via magnets, configure yours today by joining the preorder! #sponsored',
     creator: 'taehatypes',
@@ -68,6 +73,7 @@ const taehaItems = [
   },
   {
     type: 'youtube',
+    modal: 'taeha',
     text: 'GMMK Pro Review: A New Era for Mechanical Keyboards?',
     creator: 'Taeha Types',
     image: '/assets/taeha-yt-1.jpg',
@@ -79,6 +85,7 @@ const taehaItems = [
 const morbidItems = [
   {
     type: 'instagram',
+    modal: 'morbid',
     text: 'Episode 251: Tara Calico\n1. Tara Calico \n2. The Polaroid associated with the case',
     creator: 'morbidpodcast',
     image: '/assets/morbid-1.jpeg',
@@ -88,6 +95,7 @@ const morbidItems = [
   },
   {
     type: 'spotify',
+    modal: 'morbid',
     text: 'Listener Tales 31',
     creator: 'Morbid: A True Crime Podcast',
     image: '/assets/morbid-spot-1.jpeg',
