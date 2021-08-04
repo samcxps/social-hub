@@ -13,34 +13,27 @@ import {
   IonListHeader,
 } from '@ionic/react';
 
+const baseSearches = [
+  {
+    shouldShow: true,
+    value: 'dms',
+  },
+  {
+    shouldShow: true,
+    value: 'taeha types',
+  },
+  {
+    shouldShow: true,
+    value: 'ivun.street',
+  },
+  {
+    shouldShow: true,
+    value: 'morbid podcast',
+  },
+];
+
 const Search = () => {
   const [searchText, setSearchText] = useState('');
-  const [recentSearches, setRecentSearches] = useState([
-    {
-      shouldShow: true,
-      value: 'dms',
-    },
-    {
-      shouldShow: true,
-      value: 'taeha types',
-    },
-    {
-      shouldShow: true,
-      value: 'ivun.street',
-    },
-    {
-      shouldShow: true,
-      value: 'morbid podcast',
-    },
-  ]);
-
-  const onSearchbarChange = e => {
-    const query = e.detail.value.toLowerCase();
-
-    recentSearches.forEach(item => {
-      const shouldShow = item.value.toLowerCase().indexOf(query) > -1;
-    });
-  };
 
   return (
     <IonPage>
@@ -52,18 +45,21 @@ const Search = () => {
       <IonContent>
         <IonSearchbar
           value={searchText}
-          onIonChange={e => onSearchbarChange(e)}
+          onIonChange={e => setSearchText(e.target.value)}
           cancelButtonIcon={false}
         ></IonSearchbar>
         <IonList>
           <IonListHeader>
             <IonText color="primary">Recent Searches</IonText>
           </IonListHeader>
-          {recentSearches.map(item => (
-            <IonItem key={`search-${item.value}`}>
-              <IonLabel>{item.value}</IonLabel>
-            </IonItem>
-          ))}
+          {baseSearches.map(
+            item =>
+              item.shouldShow && (
+                <IonItem key={`search-${item.value}`}>
+                  <IonLabel>{item.value}</IonLabel>
+                </IonItem>
+              )
+          )}
         </IonList>
       </IonContent>
     </IonPage>
