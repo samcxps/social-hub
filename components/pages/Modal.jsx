@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import {
@@ -23,6 +24,9 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  IonText,
+  IonRadioGroup,
+  IonRadio,
 } from '@ionic/react';
 import { closeOutline } from 'ionicons/icons';
 
@@ -111,8 +115,8 @@ const PrizeDonation = ({ creator, setShowModal }) => {
 const BattleDonation = ({ creator, setShowModal }) => {
   const [purchaseAlert, setPurchaseAlert] = useState(false);
   const [value, setValue] = useState(-1);
-  const [message, setMessage] = useState();
   const [customAmount, setCustomAmount] = useState();
+  const [selectedCard, setSelectedCard] = useState(-1);
 
   const clickHandler = value => {
     setValue(value);
@@ -139,9 +143,33 @@ const BattleDonation = ({ creator, setShowModal }) => {
           },
         ]}
       />
-      <div className="flex flex-row">
-        <div>Creator 1</div>
-        <div>Creator 2</div>
+
+      <div className="flex flex-row justify-center space-x-8 pt-6">
+        <IonCard button onClick={() => setSelectedCard(1)}>
+          <div className={selectedCard === 1 && 'border-2 overflow-auto border-blue-500'}>
+            <div className="p-8">
+              <div className="flex flex-col text-center">
+                <IonLabel>Creator 1</IonLabel>
+                <img
+                  src="https://joeschmoe.io/api/v1/taeha"
+                  alt="Creator 1"
+                  className="h-24 w-24"
+                />
+              </div>
+            </div>
+          </div>
+        </IonCard>
+
+        <IonCard button onClick={() => setSelectedCard(2)}>
+          <div className={selectedCard === 2 && 'border-2 overflow-auto border-blue-500'}>
+            <div className="p-8">
+              <div className="flex flex-col text-center">
+                <IonLabel>Creator 2</IonLabel>
+                <img src="https://joeschmoe.io/api/v1/dms" alt="Creator 2" className="h-24 w-24" />
+              </div>
+            </div>
+          </div>
+        </IonCard>
       </div>
     </>
   );
@@ -247,7 +275,6 @@ export const DonationModal = ({ creator, showModal, setShowModal }) => {
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          {/* <MessageDonation creator={creator} setShowModal={setShowModal} /> */}
           <BattleDonation creator={creator} setShowModal={setShowModal} />
         </IonContent>
       </IonPage>
