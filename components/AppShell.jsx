@@ -16,6 +16,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addListener(async status => {
   } catch {}
 });
 
+const hi = () => <h1>hi</h1>;
 const AppShell = () => {
   return (
     <IonApp>
