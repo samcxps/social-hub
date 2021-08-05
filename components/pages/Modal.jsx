@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import {
   IonButton,
@@ -14,13 +15,143 @@ import {
   IonNote,
   IonIcon,
   IonButtons,
+  IonInput,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from '@ionic/react';
 import { closeOutline } from 'ionicons/icons';
 
 const PrizeDonation = ({ creator, setShowModal }) => {
   const [purchaseAlert, setPurchaseAlert] = useState(false);
   const [value, setValue] = useState(-1);
-  const [text, setText] = useState();
+  const [message, setMessage] = useState();
+  const [customAmount, setCustomAmount] = useState();
+
+  const clickHandler = value => {
+    setValue(value);
+    setPurchaseAlert(true);
+  };
+
+  return (
+    <>
+      <IonAlert
+        isOpen={purchaseAlert}
+        onDidDismiss={() => setPurchaseAlert(false)}
+        header="Confirm Donation"
+        subHeader={`Send $${value} to ${creator}?`}
+        message="We will use the primary payment method on file and you will be entered in a raffle to win a cool shirt!"
+        buttons={[
+          {
+            text: 'Cancel',
+            role: 'cancel',
+          },
+          {
+            text: 'Confirm',
+            handler: () => {
+              setShowModal(false);
+            },
+          },
+        ]}
+      />
+      <div className="px-8 pt-6 text-center">
+        <IonCard>
+          <IonCardHeader>
+            <IonCardSubtitle>Enter to win an exclusive {creator} shirt!</IonCardSubtitle>
+          </IonCardHeader>
+
+          <IonCardContent>
+            <img src="/assets/shirt.jpeg" alt="Cool Shirt" />
+          </IonCardContent>
+        </IonCard>
+      </div>
+
+      <div className="flex flex-col pt-12 mx-8 space-y-4">
+        <div>
+          <div className="mx-2">
+            <IonButton color="primary" expand="block" onClick={() => clickHandler(1)}>
+              $1
+            </IonButton>
+          </div>
+          <IonButton color="success" expand="block" size="large" onClick={() => clickHandler(5)}>
+            $5
+          </IonButton>
+          <div className="mx-2">
+            <IonButton color="primary" expand="block" onClick={() => clickHandler(10)}>
+              $10
+            </IonButton>
+          </div>
+
+          <div className="mt-8">
+            <div className="pl-5 mt-1">
+              <IonNote slot="end">Or donate a custom amount!</IonNote>
+            </div>
+            <IonItem>
+              <IonInput
+                value={customAmount}
+                type="number"
+                placeholder="Enter Input"
+                onIonChange={e => setCustomAmount(e.detail.value)}
+              ></IonInput>
+              <IonButton color="primary" expand="block" onClick={() => clickHandler(customAmount)}>
+                Donate
+              </IonButton>
+            </IonItem>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const BattleDonation = ({ creator, setShowModal }) => {
+  const [purchaseAlert, setPurchaseAlert] = useState(false);
+  const [value, setValue] = useState(-1);
+  const [message, setMessage] = useState();
+  const [customAmount, setCustomAmount] = useState();
+
+  const clickHandler = value => {
+    setValue(value);
+    setPurchaseAlert(true);
+  };
+  return (
+    <>
+      <IonAlert
+        isOpen={purchaseAlert}
+        onDidDismiss={() => setPurchaseAlert(false)}
+        header="Confirm Donation"
+        subHeader={`Send $${value} to ${creator}?`}
+        message="We will use the primary payment method on file"
+        buttons={[
+          {
+            text: 'Cancel',
+            role: 'cancel',
+          },
+          {
+            text: 'Confirm',
+            handler: () => {
+              setShowModal(false);
+            },
+          },
+        ]}
+      />
+      <div className="flex flex-row">
+        <div>Creator 1</div>
+        <div>Creator 2</div>
+      </div>
+    </>
+  );
+};
+
+const MessageDonation = ({ creator, setShowModal }) => {
+  const [purchaseAlert, setPurchaseAlert] = useState(false);
+  const [value, setValue] = useState(-1);
+  const [message, setMessage] = useState();
+  const [customAmount, setCustomAmount] = useState();
 
   const clickHandler = value => {
     setValue(value);
@@ -49,13 +180,16 @@ const PrizeDonation = ({ creator, setShowModal }) => {
         ]}
       />
       <div className="flex flex-col pt-12 mx-8 space-y-4">
-        <div className="sm:col-span-6">
-          <IonLabel>Message</IonLabel>
-          <div className="mt-1">
-            <IonItem>
-              <IonTextarea color="light" value={text} onIonChange={e => setText(e.detail.value)} />
-            </IonItem>
-          </div>
+        <IonLabel>Message</IonLabel>
+        <div className="mt-1">
+          <IonItem>
+            <IonTextarea
+              class="themed-textarea"
+              color="light"
+              value={message}
+              onIonChange={e => setMessage(e.detail.value)}
+            />
+          </IonItem>
           <div className="mt-1">
             <IonNote>Send {creator} a message!</IonNote>
           </div>
@@ -74,6 +208,23 @@ const PrizeDonation = ({ creator, setShowModal }) => {
             <IonButton color="primary" expand="block" onClick={() => clickHandler(10)}>
               $10
             </IonButton>
+          </div>
+
+          <div className="mt-8">
+            <div className="pl-5 mt-1">
+              <IonNote slot="end">Or donate a custom amount!</IonNote>
+            </div>
+            <IonItem>
+              <IonInput
+                value={customAmount}
+                type="number"
+                placeholder="Enter Input"
+                onIonChange={e => setCustomAmount(e.detail.value)}
+              ></IonInput>
+              <IonButton color="primary" expand="block" onClick={() => clickHandler(customAmount)}>
+                Donate
+              </IonButton>
+            </IonItem>
           </div>
         </div>
       </div>
@@ -96,7 +247,8 @@ export const DonationModal = ({ creator, showModal, setShowModal }) => {
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <PrizeDonation creator={creator} setShowModal={setShowModal} />
+          {/* <MessageDonation creator={creator} setShowModal={setShowModal} /> */}
+          <BattleDonation creator={creator} setShowModal={setShowModal} />
         </IonContent>
       </IonPage>
     </IonModal>

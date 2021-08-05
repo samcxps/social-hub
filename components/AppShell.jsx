@@ -1,10 +1,12 @@
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonSplitPane, setupConfig } from '@ionic/react';
 import { StatusBar, Style } from '@capacitor/status-bar';
 
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 
 import Tabs from './pages/Tabs';
+
+setupConfig({ mode: 'ios' });
 
 window.matchMedia('(prefers-color-scheme: dark)').addListener(async status => {
   try {
